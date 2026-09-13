@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CoCoA · Assistant de codage CIM-10</title>
+<style>
+  :root {
+    --bg: #f4f6f8;
+    --panel: #ffffff;
+    --ink: #1a2230;
+    --muted: #667085;
+    --line: #e4e8ee;
+    --accent: #1f6feb;
+    --accent-ink: #ffffff;
+    --chip: #eef2f7;
+    --ok: #1a7f47;
+    --warn: #b25e00;
+    --warn-bg: #fff3e2;
+    --err: #b42318;
+    --err-bg: #fef3f2;
+    --code-bg: #eaf1ff;
+    --code-ink: #1a4bb3;
+    --radius: 10px;
+    --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 1px 3px rgba(16, 24, 40, .1);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1420;
+      --panel: #161d2b;
+      --ink: #e8ecf3;
+      --muted: #93a1b5;
+      --line: #263248;
+      --accent: #4d8dff;
+      --chip: #1e2839;
+      --ok: #4ade80;
+      --warn: #f0b866;
+      --warn-bg: #2e2413;
+      --err: #f2a19a;
+      --err-bg: #2c1815;
+      --code-bg: #1b2942;
+      --code-ink: #9dc0ff;
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 18px 64px; }
+
+  header { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  header h1 { font-size: 19px; margin: 0; letter-spacing: -.01em; }
+  header p { margin: 0; color: var(--muted); font-size: 13px; }
+  .health {
+    margin-left: auto; display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--muted); white-space: nowrap;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex: none; }
+  .dot.up { background: var(--ok); }
+  .dot.down { background: var(--err); }
+
+  form {
+    margin: 20px 0 14px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 14px;
+  }
+  .field { display: flex; gap: 10px; align-items: flex-start; }
+  textarea {
+    flex: 1; resize: none; border: 1px solid var(--line); border-radius: 8px;
+    background: var(--bg); color: var(--ink); padding: 10px 12px;
+    font: inherit; min-height: 46px;
+  }
+  textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
+  button {
+    font: inherit; font-weight: 600; cursor: pointer;
+    background: var(--accent); color: var(--accent-ink);
+    border: 0; border-radius: 8px; padding: 10px 18px; min-height: 46px;
+  }
+  button:disabled { opacity: .55; cursor: default; }
+  .meta { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+  .counter { font-size: 12px; color: var(--muted); }
+  .counter.over { color: var(--err); }
+
+  .examples { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .chip {
+    font-size: 12.5px; border: 1px solid var(--line); background: var(--chip);
+    color: var(--ink); border-radius: 999px; padding: 4px 10px; cursor: pointer;
+  }
+  .chip:hover { border-color: var(--accent); }
+
+  #status { min-height: 20px; margin: 10px 2px; font-size: 13px; color: var(--muted); }
+  .banner {
+    border-radius: 8px; padding: 10px 12px; font-size: 13.5px; margin: 10px 0;
+  }
+  .banner.err { background: var(--err-bg); color: var(--err); }
+
+  .result-head { display: flex; align-items: baseline; gap: 8px; margin: 18px 2px 8px; }
+  .result-head h2 { font-size: 15px; margin: 0; }
+  .result-head .time { font-size: 12px; color: var(--muted); margin-left: auto; }
+
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 14px; margin-bottom: 10px;
+  }
+  .card-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .code {
+    font: 600 13px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: var(--code-bg); color: var(--code-ink);
+    padding: 5px 8px; border-radius: 6px; letter-spacing: .02em;
+  }
+  .desc { font-weight: 600; }
+  .tag {
+    font-size: 11px; font-weight: 600; padding: 3px 7px; border-radius: 999px;
+    background: var(--warn-bg); color: var(--warn); display: inline-flex; gap: 4px;
+  }
+  .card p { margin: 8px 0 0; }
+  .card .label { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-top: 10px; }
+  .bonus { font-size: 13.5px; color: var(--muted); border-left: 2px solid var(--line); padding-left: 10px; }
+
+  .empty { color: var(--muted); font-style: italic; padding: 8px 2px; }
+  .spin {
+    display: inline-block; width: 13px; height: 13px; vertical-align: -2px; margin-right: 6px;
+    border: 2px solid var(--muted); border-top-color: transparent; border-radius: 50%;
+    animation: spin .7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  footer { margin-top: 28px; font-size: 12px; color: var(--muted); text-align: center; }
+  code.k { font-family: ui-monospace, Menlo, monospace; background: var(--chip); padding: 1px 5px; border-radius: 4px; }
+
+  .auth { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 14px 0 0; font-size: 13px; }
+  .auth input {
+    border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px;
+    font: inherit; background: var(--bg); color: var(--ink); width: 120px;
+  }
+  .auth button { min-height: 0; padding: 8px 14px; }
+  .auth button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--line); }
+  .auth .who { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Assistant de codage CIM-10</h1>
+      <p>RAG sur le document d'expertise CoCoA</p>
+    </div>
+    <span class="health" id="health"><span class="dot" id="healthDot"></span><span id="healthText">vérification…</span></span>
+  </header>
+
+  <div class="auth" id="authBar"></div>
+
+  <form id="form">
+    <div class="field">
+      <textarea id="input" maxlength="100" rows="1" placeholder="Diagnostic, symptôme ou signe clinique (max. 100 caractères)…" autofocus></textarea>
+      <button type="submit" id="submit">Analyser</button>
+    </div>
+    <div class="meta">
+      <span class="counter" id="counter">0 / 100</span>
+    </div>
+    <div class="examples" id="examples"></div>
+  </form>
+
+  <div id="status"></div>
+  <div id="results"></div>
+
+  <footer>
+    Interface de test — <code class="k">POST /suggest_code</code> (auth JWT · demo/demo) · aucune donnée patient n'est stockée.
+  </footer>
+</div>
+
+<script>
+(() => {
+  const EXAMPLES = [
+    "Dyspnée à l’effort et à la parole",
+    "Toux purulente",
+    "Œdème des membres inférieurs",
+    "Hyponatrémie (faible taux de sodium)",
+    "Hypercalcémie (taux élevé de calcium)",
+    "Râles crépitants bilatéraux",
+    "Tachycardie",
+    "Acidose mixte avec hyperlactatémie",
+    "Détresse respiratoire aiguë",
+    "Pneumopathie d’hypersensibilité",
+    "Dyslipidémie",
+    "Hypertension artérielle (HTA)",
+    "Diabète de type 2 non insulinodépendant",
+    "Fibrillation auriculaire",
+    "Infection pulmonaire à Haemophilus influenzae",
+    "Insuffisance rénale aiguë fonctionnelle",
+    "Tuberculose pulmonaire, confirmée par culture",
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  const form = $("form"), input = $("input"), submit = $("submit");
+  const counter = $("counter"), statusEl = $("status"), results = $("results");
+  const authBar = $("authBar");
+
+  // --- Demo auth (POST /auth/login → bearer token; guards POST /suggest_code) ---
+  let token = null;
+  try { token = localStorage.getItem("cocoa_token"); } catch {}
+
+  function setToken(t) {
+    token = t || null;
+    try { token ? localStorage.setItem("cocoa_token", token) : localStorage.removeItem("cocoa_token"); } catch {}
+    renderAuth();
+  }
+
+  function renderAuth() {
+    const gated = !token;
+    input.disabled = gated;
+    submit.disabled = gated;
+    document.querySelectorAll("#examples button").forEach((b) => { b.disabled = gated; });
+    if (token) {
+      authBar.innerHTML = `<span class="who">Connecté (demo)</span>
+        <button type="button" class="ghost" id="logout">Déconnexion</button>`;
+      $("logout").addEventListener("click", () => setToken(null));
+    } else {
+      authBar.innerHTML = `
+        <input id="u" placeholder="utilisateur" value="demo" autocomplete="username" />
+        <input id="p" type="password" placeholder="mot de passe" value="demo" autocomplete="current-password" />
+        <button type="button" id="login">Se connecter</button>
+        <span class="who" id="authMsg">connexion requise</span>`;
+      $("login").addEventListener("click", doLogin);
+      $("p").addEventListener("keydown", (e) => { if (e.key === "Enter") doLogin(); });
+    }
+  }
+
+  async function doLogin() {
+    $("authMsg").textContent = "…";
+    try {
+      const r = await fetch("/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: $("u").value, password: $("p").value }),
+      });
+      if (!r.ok) { $("authMsg").textContent = "identifiants invalides"; return; }
+      setToken((await r.json()).access_token);
+      input.focus();
+    } catch {
+      $("authMsg").textContent = "backend injoignable";
+    }
+  }
+
+  // Examples
+  const exWrap = $("examples");
+  EXAMPLES.forEach((text) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip";
+    b.textContent = text;
+    b.addEventListener("click", () => { input.value = text; sync(); input.focus(); run(); });
+    exWrap.appendChild(b);
+  });
+
+  // Char counter + autosize
+  function sync() {
+    const n = input.value.length;
+    counter.textContent = n + " / 100";
+    counter.classList.toggle("over", n >= 100);
+    input.style.height = "auto";
+    input.style.height = Math.min(input.scrollHeight, 160) + "px";
+  }
+  input.addEventListener("input", sync);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); run(); }
+  });
+  sync();
+
+  // Health poll
+  async function poll() {
+    try {
+      const r = await fetch("/rag-health");
+      const d = await r.json();
+      if (d.chroma) {
+        setHealth("up", `connecté · ${d.chunks?.toLocaleString("fr") ?? "?"} chunks`);
+      } else {
+        setHealth("down", "ChromaDB injoignable");
+      }
+    } catch {
+      setHealth("down", "backend injoignable");
+    }
+  }
+  function setHealth(cls, text) {
+    $("healthDot").className = "dot " + cls;
+    $("healthText").textContent = text;
+  }
+  poll();
+  setInterval(poll, 15000);
+
+  renderAuth();
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => (
+    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]
+  ));
+
+  async function run() {
+    const symptom = input.value.trim();
+    if (!symptom || !token) return;
+    submit.disabled = true;
+    results.innerHTML = "";
+    statusEl.innerHTML = `<span class="spin"></span>Récupération des extraits CoCoA et génération…`;
+    const t0 = performance.now();
+
+    try {
+      const r = await fetch("/suggest_code", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token,
+        },
+        body: JSON.stringify({ symptom }),
+      });
+      const secs = ((performance.now() - t0) / 1000).toFixed(1);
+
+      if (r.status === 401) {
+        setToken(null);
+        statusEl.textContent = "";
+        results.innerHTML = `<div class="banner err">Session expirée — reconnectez-vous.</div>`;
+        return;
+      }
+
+      const data = await r.json();
+
+      if (!r.ok) {
+        const msg = Array.isArray(data.message) ? data.message.join(", ") : (data.message || r.statusText);
+        statusEl.textContent = "";
+        results.innerHTML = `<div class="banner err">Erreur ${r.status} — ${esc(msg)}</div>`;
+        return;
+      }
+      render(data, secs);
+    } catch (err) {
+      statusEl.textContent = "";
+      results.innerHTML = `<div class="banner err">Requête impossible — ${esc(err.message)}</div>`;
+    } finally {
+      submit.disabled = !token; // stay disabled if the session was just cleared
+    }
+  }
+
+  function render(data, secs) {
+    statusEl.textContent = "";
+    const s = data.suggestions || [];
+    let html = `<div class="result-head">
+      <h2>${esc(data.query)}</h2>
+      <span class="time">${s.length} suggestion${s.length > 1 ? "s" : ""} · ${secs}s</span>
+    </div>`;
+
+    if (!s.length) {
+      html += `<div class="empty">Aucune suggestion — l'information n'est pas présente dans les extraits CoCoA récupérés.</div>`;
+      results.innerHTML = html;
+      return;
+    }
+
+    for (const item of s) {
+      const ungrounded = item.grounded === false
+        ? `<span class="tag" title="Ce code n'apparaît pas parmi les extraits renvoyés par la recherche vectorielle — il provient d'un commentaire ou du raisonnement du modèle.">⚠ non ancré</span>`
+        : "";
+      html += `<div class="card">
+        <div class="card-top">
+          <span class="code">${esc(item.code_icd10)}</span>
+          <span class="desc">${esc(item.description)}</span>
+          ${ungrounded}
+        </div>
+        <div class="label">Justification</div>
+        <p>${esc(item.justification)}</p>
+        ${item.bonus_info ? `<div class="label">Info CoCoA</div><p class="bonus">${esc(item.bonus_info)}</p>` : ""}
+      </div>`;
+    }
+    results.innerHTML = html;
+  }
+
+  form.addEventListener("submit", (e) => { e.preventDefault(); run(); });
+})();
+</script>
+</body>
+</html>

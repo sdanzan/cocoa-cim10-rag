@@ -1,0 +1,365 @@
+{
+  "generated_at": "20260913T124624.704529Z",
+  "mode": "retrieval",
+  "collection": "cocoa_cim10_v2",
+  "k": 5,
+  "n": 25,
+  "recall_at_k": 0.6,
+  "mrr": 0.52,
+  "rows": [
+    {
+      "input": "Fibrillation auriculaire",
+      "gold": [
+        "I48"
+      ],
+      "retrieved": [
+        "I48.0",
+        "I48.1",
+        "I48.2",
+        "I48.9",
+        "I49.0"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Tachycardie",
+      "gold": [
+        "R00.0",
+        "I47",
+        "I49"
+      ],
+      "retrieved": [
+        "I47.2",
+        "R00.0",
+        "I47.1",
+        "I46.9",
+        "I47.9"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Hyponatrémie (faible taux de sodium)",
+      "gold": [
+        "E87.1"
+      ],
+      "retrieved": [
+        "E87.08",
+        "E87.10",
+        "E87.0",
+        "R49.2",
+        "R79.0"
+      ],
+      "first_hit_rank": 1
+    },
+    {
+      "input": "Hypercalcémie (taux élevé de calcium)",
+      "gold": [
+        "E83.5"
+      ],
+      "retrieved": [
+        "E83.5",
+        "E83.51",
+        "E83.50",
+        "L98.7",
+        "E21.2"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Diabète de type 2 non insulinodépendant",
+      "gold": [
+        "E11"
+      ],
+      "retrieved": [
+        "E11.18",
+        "E11.68",
+        "E11.38",
+        "E11.08",
+        "E11.28"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Hypertension artérielle (HTA)",
+      "gold": [
+        "I10"
+      ],
+      "retrieved": [
+        "R03.0",
+        "I00",
+        "I27.2",
+        "I09.9",
+        "R03.1"
+      ],
+      "first_hit_rank": null
+    },
+    {
+      "input": "Insuffisance rénale aiguë fonctionnelle (secondaire à la déplétion)",
+      "gold": [
+        "R39.2"
+      ],
+      "retrieved": [
+        "N17.8",
+        "R39.2",
+        "N17.2",
+        "N18.5",
+        "O08.4"
+      ],
+      "first_hit_rank": 1
+    },
+    {
+      "input": "Dyspnée à l'effort et à la parole",
+      "gold": [
+        "R06.0"
+      ],
+      "retrieved": [
+        "T73.3",
+        "F80.9",
+        "F80.0",
+        "F63.2",
+        "F98.6"
+      ],
+      "first_hit_rank": null
+    },
+    {
+      "input": "Fièvre",
+      "gold": [
+        "R50.9"
+      ],
+      "retrieved": [
+        "A79.0",
+        "A77.1",
+        "A77.0",
+        "A95.0",
+        "A68.1"
+      ],
+      "first_hit_rank": null
+    },
+    {
+      "input": "Œdème des membres inférieurs",
+      "gold": [
+        "R60.0"
+      ],
+      "retrieved": [
+        "T04.3",
+        "D03.7",
+        "Z89.7",
+        "G57.8",
+        "D03.6"
+      ],
+      "first_hit_rank": null
+    },
+    {
+      "input": "Hyperleucocytose (augmentation des globules blancs)",
+      "gold": [
+        "D72.8"
+      ],
+      "retrieved": [
+        "R70.1",
+        "D72.0",
+        "E87.8",
+        "D75.0",
+        "L98.7"
+      ],
+      "first_hit_rank": null
+    },
+    {
+      "input": "Désaturation à l'effort (saturation d'oxygène à 80 %)",
+      "gold": [
+        "R09.0"
+      ],
+      "retrieved": [
+        "E66.26",
+        "E66.27",
+        "E66.24",
+        "R52.9",
+        "E66.22"
+      ],
+      "first_hit_rank": null
+    },
+    {
+      "input": "Acidose mixte avec hyperlactatémie",
+      "gold": [
+        "E87.4"
+      ],
+      "retrieved": [
+        "E87.4",
+        "E87.2",
+        "L68.1",
+        "F50.3",
+        "L98.7"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Détresse respiratoire aiguë",
+      "gold": [
+        "J80"
+      ],
+      "retrieved": [
+        "R07.4",
+        "J95.9",
+        "R04.9",
+        "J96.09",
+        "J94.9"
+      ],
+      "first_hit_rank": null
+    },
+    {
+      "input": "Altération de la conscience (stade terminal)",
+      "gold": [
+        "R40.2"
+      ],
+      "retrieved": [
+        "M79.5",
+        "R40.28",
+        "R40.2",
+        "F62.0",
+        "P01.7"
+      ],
+      "first_hit_rank": 1
+    },
+    {
+      "input": "Pneumopathie d'hypersensibilité",
+      "gold": [
+        "J67"
+      ],
+      "retrieved": [
+        "J67.9",
+        "J67.8",
+        "J95.4",
+        "J63.8",
+        "J66.8"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Hypertension pulmonaire (groupes 2 et 3)",
+      "gold": [
+        "I27.2"
+      ],
+      "retrieved": [
+        "I27.2",
+        "P29.3",
+        "I27.0",
+        "R03.0",
+        "J98.3"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Dyslipidémie",
+      "gold": [
+        "E78"
+      ],
+      "retrieved": [
+        "E78.2",
+        "E78.5",
+        "E78.3",
+        "C92.8",
+        "E78.1"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Syndrome d'apnées obstructives du sommeil (SAOS) appareillé par PPC",
+      "gold": [
+        "G47.3"
+      ],
+      "retrieved": [
+        "G47.3",
+        "Z38",
+        "J18.9",
+        "J43.9",
+        "F50.8"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Infection pulmonaire à Haemophilus influenzae",
+      "gold": [
+        "J14"
+      ],
+      "retrieved": [
+        "A41.3",
+        "A41.3",
+        "A49.2",
+        "B96.3",
+        "A48.4"
+      ],
+      "first_hit_rank": null
+    },
+    {
+      "input": "Insuffisance respiratoire aiguë hypoxémique sur décompensation cardiaque globale",
+      "gold": [
+        "J96.0",
+        "I50.9"
+      ],
+      "retrieved": [
+        "J96.0",
+        "J95.9",
+        "J96.00",
+        "J96.19",
+        "J96.9"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Pneumopathie à Haemophilus influenzae",
+      "gold": [
+        "J14"
+      ],
+      "retrieved": [
+        "A41.3",
+        "A41.3",
+        "B96.3",
+        "J12.8",
+        "P23.6"
+      ],
+      "first_hit_rank": null
+    },
+    {
+      "input": "Décompensation de pneumopathie interstitielle chronique compliquée de défaillance cardiaque",
+      "gold": [
+        "J84.1",
+        "I50.9"
+      ],
+      "retrieved": [
+        "I27.9",
+        "J98.3",
+        "J18.9",
+        "J95.3",
+        "J67.9"
+      ],
+      "first_hit_rank": null
+    },
+    {
+      "input": "Acidose mixte (secondaire à la décompensation respiratoire)",
+      "gold": [
+        "E87.4"
+      ],
+      "retrieved": [
+        "E87.2",
+        "E87.4",
+        "J45.9",
+        "M31.3",
+        "J21.9"
+      ],
+      "first_hit_rank": 1
+    },
+    {
+      "input": "Tuberculose pulmonaire, confirmée par culture",
+      "gold": [
+        "A15"
+      ],
+      "retrieved": [
+        "A15.0",
+        "A15.3",
+        "A15.2",
+        "A16.1",
+        "A15.6"
+      ],
+      "first_hit_rank": 0
+    }
+  ]
+}

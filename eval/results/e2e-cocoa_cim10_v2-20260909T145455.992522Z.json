@@ -1,0 +1,432 @@
+{
+  "generated_at": "20260909T145455.992522Z",
+  "mode": "e2e",
+  "collection": "cocoa_cim10_v2",
+  "n": 28,
+  "graded": 25,
+  "any_hit_rate": 0.72,
+  "top1_rate": 0.72,
+  "mean_precision": 0.627,
+  "mean_recall": 0.673,
+  "abstention_accuracy": 0.667,
+  "grounded_rate": 0.794,
+  "latency_mean_s": 5.75,
+  "latency_p95_s": 12.55,
+  "rows": [
+    {
+      "input": "Fibrillation auriculaire",
+      "gold": [
+        "I48"
+      ],
+      "predicted": [
+        "I48.9"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 5.34,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Toux purulente",
+      "gold": [],
+      "predicted": [],
+      "grounded": [],
+      "latency_s": 2.46,
+      "abstained_correctly": true
+    },
+    {
+      "input": "Tachycardie",
+      "gold": [
+        "R00.0",
+        "I47",
+        "I49"
+      ],
+      "predicted": [
+        "R00.0"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 4.43,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Hyponatrémie (faible taux de sodium)",
+      "gold": [
+        "E87.1"
+      ],
+      "predicted": [
+        "E87.1",
+        "E87.10",
+        "R79.0"
+      ],
+      "grounded": [
+        false,
+        true,
+        true
+      ],
+      "latency_s": 7.44,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Hypercalcémie (taux élevé de calcium)",
+      "gold": [
+        "E83.5"
+      ],
+      "predicted": [
+        "E83.50"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 3.98,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Diabète de type 2 non insulinodépendant",
+      "gold": [
+        "E11"
+      ],
+      "predicted": [
+        "E11.68"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 4.46,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Hypertension artérielle (HTA)",
+      "gold": [
+        "I10"
+      ],
+      "predicted": [
+        "I10",
+        "I11",
+        "R03.0"
+      ],
+      "grounded": [
+        false,
+        false,
+        true
+      ],
+      "latency_s": 12.55,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Insuffisance rénale aiguë fonctionnelle (secondaire à la déplétion)",
+      "gold": [
+        "R39.2"
+      ],
+      "predicted": [
+        "R39.2",
+        "N17.8",
+        "N17.9"
+      ],
+      "grounded": [
+        true,
+        true,
+        false
+      ],
+      "latency_s": 13.62,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Dyspnée à l'effort et à la parole",
+      "gold": [
+        "R06.0"
+      ],
+      "predicted": [],
+      "grounded": [],
+      "latency_s": 3.51,
+      "any_hit": false,
+      "top1_hit": false
+    },
+    {
+      "input": "Fièvre",
+      "gold": [
+        "R50.9"
+      ],
+      "predicted": [],
+      "grounded": [],
+      "latency_s": 1.23,
+      "any_hit": false,
+      "top1_hit": false
+    },
+    {
+      "input": "Œdème des membres inférieurs",
+      "gold": [
+        "R60.0"
+      ],
+      "predicted": [],
+      "grounded": [],
+      "latency_s": 1.6,
+      "any_hit": false,
+      "top1_hit": false
+    },
+    {
+      "input": "Syndrome inflammatoire (CRP élevée)",
+      "gold": [],
+      "predicted": [
+        "R65.9",
+        "R65.0",
+        "U10.9"
+      ],
+      "grounded": [
+        true,
+        true,
+        true
+      ],
+      "latency_s": 10.38,
+      "abstained_correctly": false
+    },
+    {
+      "input": "Hyperleucocytose (augmentation des globules blancs)",
+      "gold": [
+        "D72.8"
+      ],
+      "predicted": [
+        "D72.8"
+      ],
+      "grounded": [
+        false
+      ],
+      "latency_s": 6.42,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Désaturation à l'effort (saturation d'oxygène à 80 %)",
+      "gold": [
+        "R09.0"
+      ],
+      "predicted": [],
+      "grounded": [],
+      "latency_s": 2.07,
+      "any_hit": false,
+      "top1_hit": false
+    },
+    {
+      "input": "Râles crépitants bilatéraux",
+      "gold": [],
+      "predicted": [],
+      "grounded": [],
+      "latency_s": 1.88,
+      "abstained_correctly": true
+    },
+    {
+      "input": "Acidose mixte avec hyperlactatémie",
+      "gold": [
+        "E87.4"
+      ],
+      "predicted": [
+        "E87.2"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 4.42,
+      "any_hit": false,
+      "top1_hit": false
+    },
+    {
+      "input": "Détresse respiratoire aiguë",
+      "gold": [
+        "J80"
+      ],
+      "predicted": [
+        "J80"
+      ],
+      "grounded": [
+        false
+      ],
+      "latency_s": 4.25,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Altération de la conscience (stade terminal)",
+      "gold": [
+        "R40.2"
+      ],
+      "predicted": [
+        "R40.28"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 5.19,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Pneumopathie d'hypersensibilité",
+      "gold": [
+        "J67"
+      ],
+      "predicted": [
+        "J67.9",
+        "J67.8",
+        "J66.8"
+      ],
+      "grounded": [
+        true,
+        true,
+        true
+      ],
+      "latency_s": 9.63,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Hypertension pulmonaire (groupes 2 et 3)",
+      "gold": [
+        "I27.2"
+      ],
+      "predicted": [
+        "I27.2"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 4.68,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Dyslipidémie",
+      "gold": [
+        "E78"
+      ],
+      "predicted": [
+        "E78.5"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 4.53,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Syndrome d'apnées obstructives du sommeil (SAOS) appareillé par PPC",
+      "gold": [
+        "G47.3"
+      ],
+      "predicted": [
+        "G47.3"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 8.23,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Infection pulmonaire à Haemophilus influenzae",
+      "gold": [
+        "J14"
+      ],
+      "predicted": [
+        "A49.2"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 3.53,
+      "any_hit": false,
+      "top1_hit": false
+    },
+    {
+      "input": "Insuffisance respiratoire aiguë hypoxémique sur décompensation cardiaque globale",
+      "gold": [
+        "J96.0",
+        "I50.9"
+      ],
+      "predicted": [
+        "J96.00",
+        "J96.0",
+        "J95.9"
+      ],
+      "grounded": [
+        true,
+        true,
+        true
+      ],
+      "latency_s": 14.62,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Pneumopathie à Haemophilus influenzae",
+      "gold": [
+        "J14"
+      ],
+      "predicted": [
+        "J14"
+      ],
+      "grounded": [
+        false
+      ],
+      "latency_s": 4.9,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Décompensation de pneumopathie interstitielle chronique compliquée de défaillance cardiaque",
+      "gold": [
+        "J84.1",
+        "I50.9"
+      ],
+      "predicted": [
+        "I27.9"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 6.71,
+      "any_hit": false,
+      "top1_hit": false
+    },
+    {
+      "input": "Acidose mixte (secondaire à la décompensation respiratoire)",
+      "gold": [
+        "E87.4"
+      ],
+      "predicted": [
+        "E87.4"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 4.35,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Tuberculose pulmonaire, confirmée par culture",
+      "gold": [
+        "A15"
+      ],
+      "predicted": [
+        "A15.0"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 4.51,
+      "any_hit": true,
+      "top1_hit": true
+    }
+  ]
+}

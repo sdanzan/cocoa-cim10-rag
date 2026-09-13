@@ -1,0 +1,6 @@
+.venv/
+rag_database/
+node_modules/
+.git/
+*.log
+.qwen/

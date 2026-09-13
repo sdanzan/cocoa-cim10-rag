@@ -1,0 +1,28 @@
+{"input": "Fibrillation auriculaire", "codes": ["I48"], "note": "any I48.x (paroxystique / persistante / chronique)"}
+{"input": "Toux purulente", "codes": [], "note": "abstain: R05 Toux is not part of CoCoA's commented subset"}
+{"input": "Tachycardie", "codes": ["R00.0", "I47", "I49"], "note": "R00.0 sans precision; I47/I49 if a specific arrhythmia is implied"}
+{"input": "Hyponatrémie (faible taux de sodium)", "codes": ["E87.1"], "note": "E87.1 Hypo-osmolarité et hyponatrémie"}
+{"input": "Hypercalcémie (taux élevé de calcium)", "codes": ["E83.5"], "note": "E83.5 Anomalies du métabolisme du calcium"}
+{"input": "Diabète de type 2 non insulinodépendant", "codes": ["E11"], "note": "any E11.x"}
+{"input": "Hypertension artérielle (HTA)", "codes": ["I10"], "note": "I10 Hypertension essentielle (primitive)"}
+{"input": "Insuffisance rénale aiguë fonctionnelle (secondaire à la déplétion)", "codes": ["R39.2"], "note": "CoCoA coding rule: functional ARF is coded R39.2 Urémie extra-rénale, not N17.x"}
+{"input": "Dyspnée à l'effort et à la parole", "codes": ["R06.0"], "note": "R06.0 Dyspnée (incl. orthopnée, essoufflement); effort/parole = sévérité, pas de code séparé"}
+{"input": "Fièvre", "codes": ["R50.9"], "note": "symptôme isolé non spécifique, cf. Toux purulente -> abstain; mais R50.9 est dans l'index (R05 non)"}
+{"input": "Œdème des membres inférieurs", "codes": ["R60.0"], "note": "R60.0 Œdème localisé; si rattaché à une insuffisance cardiaque -> I50.9"}
+{"input": "Syndrome inflammatoire (CRP élevée)", "codes": [], "note": "pas de code CIM-10 pour syndrome inflammatoire biologique / CRP élevée; abstain recommandé (fallback R79.9)"}
+{"input": "Hyperleucocytose (augmentation des globules blancs)", "codes": ["D72.8"], "note": "D72.8 liste Leucocytose comme terme d'inclusion"}
+{"input": "Désaturation à l'effort (saturation d'oxygène à 80 %)", "codes": ["R09.0"], "note": "R09.0 hypoxémie/asphyxie; pas de code désaturation dédié; abstain possible"}
+{"input": "Râles crépitants bilatéraux", "codes": [], "note": "abstain, signe d'auscultation pur, pas de code CIM-10 distinct; coder la maladie sous-jacente"}
+{"input": "Acidose mixte avec hyperlactatémie", "codes": ["E87.4"], "note": "E87.4 anomalie mixte de l'équilibre acido-basique; E87.2 aussi acceptable"}
+{"input": "Détresse respiratoire aiguë", "codes": ["J80"], "note": "J80 SDRA de l'adulte; si insuffisance respiratoire aiguë plutôt que SDRA -> J96.0"}
+{"input": "Altération de la conscience (stade terminal)", "codes": ["R40.2"], "note": "R40.2 Coma SAI / perte de conscience SAI; R40.1 Stupeur si partielle"}
+{"input": "Pneumopathie d'hypersensibilité", "codes": ["J67"], "note": "any J67.x (J67.9 sans précision)"}
+{"input": "Hypertension pulmonaire (groupes 2 et 3)", "codes": ["I27.2"], "note": "groupes 2/3 = HTP secondaire -> I27.2; PAS I27.0 (primitive = groupe 1); I27.8 acceptable"}
+{"input": "Dyslipidémie", "codes": ["E78"], "note": "any E78.x (non précisé -> E78.5)"}
+{"input": "Syndrome d'apnées obstructives du sommeil (SAOS) appareillé par PPC", "codes": ["G47.3"], "note": "G47.3 apnée du sommeil (obstructive); Z99.1 en option pour l'appareillage PPC"}
+{"input": "Infection pulmonaire à Haemophilus influenzae", "codes": ["J14"], "note": "J14 présent dans l'index depuis le fix B5 (2026-09-13, code précédemment avalé par le marqueur de colonne 'P R A'); retrouvé en top-1"}
+{"input": "Insuffisance respiratoire aiguë hypoxémique sur décompensation cardiaque globale", "codes": ["J96.0", "I50.9"], "note": "J96.0/J96.00 IRA type I hypoxique + I50.9 décompensation cardiaque globale"}
+{"input": "Pneumopathie à Haemophilus influenzae", "codes": ["J14"], "note": "J14 présent dans l'index depuis le fix B5 (2026-09-13); retrouvé en top-1, désormais ancré"}
+{"input": "Décompensation de pneumopathie interstitielle chronique compliquée de défaillance cardiaque", "codes": ["J84.1", "I50.9"], "note": "J84.1 (interstitielle avec fibrose) + I50.9; J84.8 acceptable pour la PID"}
+{"input": "Acidose mixte (secondaire à la décompensation respiratoire)", "codes": ["E87.4"], "note": "E87.4 anomalie mixte de l'équilibre acido-basique; E87.2 acceptable"}
+{"input": "Tuberculose pulmonaire, confirmée par culture", "codes": ["A15"], "note": "A15.1 présent dans l'index depuis le fix B5 (2026-09-13), désormais retrouvé en top-1; racine A15 matche l'un ou l'autre"}

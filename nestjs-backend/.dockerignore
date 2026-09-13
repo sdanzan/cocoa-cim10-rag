@@ -1,0 +1,9 @@
+node_modules
+dist
+*.log
+.git
+Dockerfile
+.dockerignore
+vitest.config.ts
+scripts
+src/**/*.spec.ts

@@ -1,0 +1,111 @@
+{
+  "generated_at": "20260909T065659.697167Z",
+  "mode": "retrieval",
+  "collection": "cocoa_cim10_v2",
+  "k": 5,
+  "n": 7,
+  "recall_at_k": 0.857,
+  "mrr": 0.714,
+  "rows": [
+    {
+      "input": "Fibrillation auriculaire",
+      "gold": [
+        "I48"
+      ],
+      "retrieved": [
+        "I48.0",
+        "I48.1",
+        "I48.2",
+        "I48.9",
+        "I49.0"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Tachycardie",
+      "gold": [
+        "R00.0",
+        "I47",
+        "I49"
+      ],
+      "retrieved": [
+        "I47.2",
+        "R00.0",
+        "I47.1",
+        "I46.9",
+        "I47.9"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Hyponatremie (faible taux de sodium)",
+      "gold": [
+        "E87.1"
+      ],
+      "retrieved": [
+        "E87.08",
+        "E87.10",
+        "E87.0",
+        "R49.2",
+        "R79.0"
+      ],
+      "first_hit_rank": 1
+    },
+    {
+      "input": "Hypercalcemie (taux eleve de calcium)",
+      "gold": [
+        "E83.5"
+      ],
+      "retrieved": [
+        "E83.5",
+        "E83.51",
+        "E83.50",
+        "L98.7",
+        "E21.2"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Diabete de type 2 non insulinodependant",
+      "gold": [
+        "E11"
+      ],
+      "retrieved": [
+        "E11.18",
+        "E11.68",
+        "E11.38",
+        "E11.08",
+        "E11.28"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Hypertension arterielle (HTA)",
+      "gold": [
+        "I10"
+      ],
+      "retrieved": [
+        "R03.0",
+        "I00",
+        "I27.2",
+        "I09.9",
+        "R03.1"
+      ],
+      "first_hit_rank": null
+    },
+    {
+      "input": "Insuffisance renale aigue fonctionnelle (secondaire a la depletion)",
+      "gold": [
+        "R39.2"
+      ],
+      "retrieved": [
+        "N17.8",
+        "R39.2",
+        "N17.2",
+        "N18.5",
+        "O08.4"
+      ],
+      "first_hit_rank": 1
+    }
+  ]
+}
