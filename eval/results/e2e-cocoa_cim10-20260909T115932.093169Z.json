@@ -1,0 +1,142 @@
+{
+  "generated_at": "20260909T115932.093169Z",
+  "mode": "e2e",
+  "collection": "cocoa_cim10",
+  "n": 8,
+  "graded": 7,
+  "any_hit_rate": 1.0,
+  "top1_rate": 1.0,
+  "mean_precision": 1.0,
+  "mean_recall": 0.905,
+  "abstention_accuracy": 1.0,
+  "grounded_rate": 0.833,
+  "latency_mean_s": 6.46,
+  "latency_p95_s": 9.09,
+  "rows": [
+    {
+      "input": "Fibrillation auriculaire",
+      "gold": [
+        "I48"
+      ],
+      "predicted": [
+        "I48.0",
+        "I48.1",
+        "I48.2"
+      ],
+      "grounded": [
+        true,
+        true,
+        true
+      ],
+      "latency_s": 7.62,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Toux purulente",
+      "gold": [],
+      "predicted": [],
+      "grounded": [],
+      "latency_s": 1.28,
+      "abstained_correctly": true
+    },
+    {
+      "input": "Tachycardie",
+      "gold": [
+        "R00.0",
+        "I47",
+        "I49"
+      ],
+      "predicted": [
+        "R00.0"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 4.19,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Hyponatremie (faible taux de sodium)",
+      "gold": [
+        "E87.1"
+      ],
+      "predicted": [
+        "E87.1",
+        "E87.10",
+        "E87.18"
+      ],
+      "grounded": [
+        false,
+        true,
+        true
+      ],
+      "latency_s": 9.09,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Hypercalcemie (taux eleve de calcium)",
+      "gold": [
+        "E83.5"
+      ],
+      "predicted": [
+        "E83.50",
+        "E83.5"
+      ],
+      "grounded": [
+        true,
+        true
+      ],
+      "latency_s": 6.55,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Diabete de type 2 non insulinodependant",
+      "gold": [
+        "E11"
+      ],
+      "predicted": [
+        "E11.68"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 6.46,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Hypertension arterielle (HTA)",
+      "gold": [
+        "I10"
+      ],
+      "predicted": [
+        "I10"
+      ],
+      "grounded": [
+        false
+      ],
+      "latency_s": 6.81,
+      "any_hit": true,
+      "top1_hit": true
+    },
+    {
+      "input": "Insuffisance renale aigue fonctionnelle (secondaire a la depletion)",
+      "gold": [
+        "R39.2"
+      ],
+      "predicted": [
+        "R39.2"
+      ],
+      "grounded": [
+        true
+      ],
+      "latency_s": 9.65,
+      "any_hit": true,
+      "top1_hit": true
+    }
+  ]
+}

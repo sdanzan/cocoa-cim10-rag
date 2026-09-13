@@ -1,0 +1,34 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+dist/
+
+# Build artifact: the ChromaDB vector store. Regenerate via the indexer
+# (see README.md "1. Build the index") - too large to version (169 MB+)
+# and fully reproducible from CoCoA.pdf.
+rag_database/
+
+# Source document: the copyrighted CIM-10 coding-rules PDF, not authored
+# here. Supply your own (see README.md) before building the index.
+CoCoA.pdf
+
+# Internal working/decision log - not part of the project's real
+# documentation (that's README.md / TECHNICAL.md), kept local only.
+IMPROVEMENTS.md
+IMPROVEMENTS-*.md
+
+# Exercise brief - kept local only, not in the repo.
+source-docs/
+
+# Local tool / editor config
+.qwen/
+.vscode/
+.claude/settings.local.json
+
+# OS / logs
+*.log
+.DS_Store

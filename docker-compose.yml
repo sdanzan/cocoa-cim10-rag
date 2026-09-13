@@ -1,0 +1,110 @@
+# Brings up ChromaDB + a small embedding-only Ollama + the API/UI.
+#
+# RETRIEVAL works out of the box: embeddings are fully containerized
+# (nomic-embed-text, 274 MB, baked into the ollama-embed image).
+#
+# GENERATION is NOT containerized (models like qwen3-coder are multi-GB) and
+# needs a properly configured LLM endpoint or the backend will 503 on every
+# /suggest_code call. The default below (LLM_PROVIDER=openai pointed at the
+# HOST's Ollama over its OpenAI-compatible /v1 endpoint) is the one path that
+# needs no API key - but it still requires Ollama to actually be running on
+# the host with the model pulled. See "Setting up local Ollama" in
+# nestjs-backend/README.md if that's not already done, or swap to a real
+# hosted API (also below) to skip host Ollama entirely.
+#
+# Prerequisites:
+#   1. Build the index (writes rag_database/), pick one:
+#        docker compose --profile indexer run --rm indexer      (containerized)
+#        python python-src/chunkize_new.py                      (host, needs Ollama)
+#      Run this with `chroma`/`backend` stopped - chunkize_new.py writes
+#      rag_database/ directly (embedded PersistentClient) and must not race the
+#      `chroma` HTTP server over the same files.
+#   2. A working LLM endpoint for generation - by default that's a host Ollama
+#      with the model pulled:  ollama pull qwen3-coder   (ollama serve running)
+#      or override OPENAI_BASE_URL / OPENAI_API_KEY / LLM_MODEL below to point
+#      at a real hosted API instead.
+#
+# Then:  docker compose up --build   ->   http://localhost:3000/
+
+services:
+  ollama-embed:
+    build:
+      context: .
+      dockerfile: ollama-embed.Dockerfile
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  # Builds rag_database/ from CoCoA.pdf. `profiles` keeps it out of a bare
+  # `docker compose up` - it only runs when explicitly asked for:
+  #   docker compose --profile indexer run --rm indexer
+  indexer:
+    profiles: ["indexer"]
+    build:
+      context: .
+      dockerfile: indexer.Dockerfile
+    volumes:
+      - ./rag_database:/data
+    environment:
+      CHROMA_PATH: /data
+      OLLAMA_URL: http://ollama-embed:11434
+    depends_on:
+      ollama-embed:
+        condition: service_healthy
+
+  chroma:
+    build:
+      context: .
+      dockerfile: chroma.Dockerfile
+    volumes:
+      - ./rag_database:/data
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v2/heartbeat')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./nestjs-backend
+    ports:
+      - "3000:3000"
+    environment:
+      CHROMA_URL: http://chroma:8000
+      OLLAMA_EMBED_URL: http://ollama-embed:11434
+      CHROMA_COLLECTION: cocoa_cim10_v2
+      EMBED_QUERY_PREFIX: "search_query: "
+      # --- Suggestion LLM: REQUIRED, the backend 503s on /suggest_code without
+      # a working endpoint here. Default: call the HOST's Ollama through its
+      # OpenAI-compatible /v1 endpoint (no API key needed, but Ollama +
+      # qwen3-coder must actually be running on the host - see
+      # "Setting up local Ollama" in nestjs-backend/README.md).
+      LLM_PROVIDER: openai
+      OPENAI_BASE_URL: http://host.docker.internal:11434/v1
+      LLM_MODEL: qwen3-coder:latest
+      #
+      # To use a real hosted API instead (no host Ollama needed at all):
+      #   OPENAI_BASE_URL: https://openrouter.ai/api/v1   # or https://api.openai.com/v1, Groq, ...
+      #   OPENAI_API_KEY: sk-...
+      #   LLM_MODEL: openai/gpt-4o-mini                    # provider-namespaced for OpenRouter
+      #
+      # To use Ollama's native /api/generate instead of its /v1 endpoint:
+      #   LLM_PROVIDER: ollama
+      #   OLLAMA_URL: http://host.docker.internal:11434
+      #
+      # demo auth on POST /suggest_code (login: demo / demo)
+      JWT_SECRET: dev-secret-change-me
+    extra_hosts:
+      # lets the container resolve the host's Ollama on Linux too
+      # (Docker Desktop provides host.docker.internal natively)
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      chroma:
+        condition: service_healthy
+      ollama-embed:
+        condition: service_healthy

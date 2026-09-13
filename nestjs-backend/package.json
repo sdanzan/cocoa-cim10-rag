@@ -1,0 +1,40 @@
+{
+  "name": "rag-backend",
+  "version": "1.0.0",
+  "description": "NestJS backend for RAG system with ChromaDB and Ollama",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "dev": "ts-node src/main.ts",
+    "chroma": "bash scripts/run-chroma.sh",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "nestjs",
+    "rag",
+    "chromadb",
+    "ollama",
+    "medical-coding",
+    "cim10"
+  ],
+  "author": "Parallel Developer",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@nestjs/common": "^12.0.1",
+    "@nestjs/core": "^12.0.1",
+    "@nestjs/jwt": "^12.0.1",
+    "@nestjs/platform-express": "^12.0.1",
+    "axios": "^1.20.0",
+    "chromadb": "^1.10.5",
+    "morgan": "^1.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0",
+    "vitest": "^3.2.7"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "generated_at": "20260909T062717.451963Z",
+  "mode": "retrieval",
+  "collection": "cocoa_cim10",
+  "k": 5,
+  "n": 7,
+  "recall_at_k": 0.857,
+  "mrr": 0.69,
+  "rows": [
+    {
+      "input": "Fibrillation auriculaire",
+      "gold": [
+        "I48"
+      ],
+      "retrieved": [
+        "I48.0",
+        "I48.1",
+        "I48.2",
+        "I49.1",
+        "I47.9"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Tachycardie",
+      "gold": [
+        "R00.0",
+        "I47",
+        "I49"
+      ],
+      "retrieved": [
+        "I47.2",
+        "R00.0",
+        "I47.1",
+        "I47.9",
+        "R00.1"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Hyponatremie (faible taux de sodium)",
+      "gold": [
+        "E87.1"
+      ],
+      "retrieved": [
+        "E87.08",
+        "E87.10",
+        "E87.0",
+        "E87.18",
+        "P71.0"
+      ],
+      "first_hit_rank": 1
+    },
+    {
+      "input": "Hypercalcemie (taux eleve de calcium)",
+      "gold": [
+        "E83.5"
+      ],
+      "retrieved": [
+        "E83.50",
+        "E83.51",
+        "E83.5",
+        "N32.8",
+        "K03.4"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Diabete de type 2 non insulinodependant",
+      "gold": [
+        "E11"
+      ],
+      "retrieved": [
+        "E11.18",
+        "E11.08",
+        "E11.38",
+        "E11.28",
+        "E11.68"
+      ],
+      "first_hit_rank": 0
+    },
+    {
+      "input": "Hypertension arterielle (HTA)",
+      "gold": [
+        "I10"
+      ],
+      "retrieved": [
+        "R03.0",
+        "N28.0",
+        "I00",
+        "I15.0",
+        "I09.9"
+      ],
+      "first_hit_rank": null
+    },
+    {
+      "input": "Insuffisance renale aigue fonctionnelle (secondaire a la depletion)",
+      "gold": [
+        "R39.2"
+      ],
+      "retrieved": [
+        "N17.8",
+        "N17.2",
+        "R39.2",
+        "N18.2",
+        "N18.5"
+      ],
+      "first_hit_rank": 2
+    }
+  ]
+}
